@@ -1,0 +1,54 @@
+$d: 10em;
+$t: 5;
+$c: #8A9B0F #F8CA00 #E97F02 #BD1550 #490A3D;
+$n: length($c);
+$u: 100%/($n - 1);
+
+.not-found {
+	display: grid;
+	margin: 1em auto;
+	width: $d; height: $d;
+	
+	&::after {
+		grid-column: 1;
+		grid-row: 1;
+		place-self: center;
+		font: #{.25*$d}/ 2 ubuntu mono, consolas, monaco, monospace;
+		animation: num $t*1s steps(1) infinite;
+		content: '0:' counter(s, decimal-leading-zero)
+	}
+}
+
+@keyframes num {
+	@for $i from 0 through $t {
+		#{$i*100%/$t} { counter-reset: s $t - $i }
+	}
+}
+
+svg {
+	grid-column: 1;
+	grid-row: 1
+}
+
+[r] {
+	fill: none;
+	stroke: silver;
+	
+	+ [r] {
+		transform: rotate(-90deg);
+		stroke-linecap: round;
+		stroke: nth($c, 1);
+		animation: arc $t*1s linear infinite;
+		animation-name: arc, col
+	}
+}
+
+@keyframes arc {
+	0% { stroke-dashoffset: 0px }
+}
+
+@keyframes col {
+	@for $i from 0 to $n {
+		#{$i*$u} { stroke: nth($c, $i + 1) }
+	}
+}
