@@ -1,8 +1,19 @@
 .title-bar {
-  background: rgba(255, 0, 0, 0.5);
-  width: 100%;
-  height: 5rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 2rem;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
 
-  &_title {
+  &__title {
+    cursor: default;
+    user-select: none;
+    color: white;
+    text-shadow: 1px 1px 5px black;
   }
 }

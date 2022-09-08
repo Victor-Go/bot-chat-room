@@ -1,0 +1,26 @@
+.user-list {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 0.5rem);
+  width: 20rem;
+  margin: 0.25rem;
+  box-sizing: border-box;
+
+  &__title {
+    cursor: default;
+    user-select: none;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 125%;
+    padding: 0 1rem;
+    color: white;
+    text-shadow: 1px 1px 5px black;
+  }
+
+  &__list {
+    height: 100%;
+    background: white;
+    border-radius: 0.75rem 0 0 0.75rem;
+    overflow-y: scroll;
+  }
+}

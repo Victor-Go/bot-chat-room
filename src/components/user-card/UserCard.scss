@@ -1,0 +1,58 @@
+.user-card {
+  display: flex;
+  height: 5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  transition: all ease-in-out 0.1s;
+  user-select: none;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  img {
+    height: 80%;
+    align-self: center;
+    border-radius: 5rem;
+    background: white;
+  }
+
+  &__info {
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+
+      &__name {
+        font-weight: bold;
+        text-align: left;
+      }
+
+      &__details {
+        display: flex;
+
+        div:not(:first-child) {
+          margin-left: 0.25rem;
+        }
+
+        .details {
+          &__status-icon {
+            height: 0.5rem;
+            width: 0.5rem;
+            align-self: center;
+            background: green;
+            border-radius: 1rem;
+          }
+
+          &__user-id {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
