@@ -1,0 +1,45 @@
+@import "../../styles/mixins.scss";
+
+.username-input {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 1rem;
+  box-sizing: border-box;
+  @include panel;
+
+  p {
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px black;
+  }
+
+  &__container {
+    display: flex;
+
+    input {
+      flex: 1;
+      height: 2rem;
+      outline: none;
+      border: none;
+      border-radius: 0.5rem;
+    }
+
+    div {
+      user-select: none;
+      cursor: pointer;
+      height: 2rem;
+      line-height: 2rem;
+      text-shadow: 1px 1px 5px black;
+      color: white;
+      padding: 0 1rem;
+      background: #248bf5;
+      border-radius: 0.5rem;
+      margin-left: 1rem;
+
+      &:active {
+        background: #1d76cf;
+      }
+    }
+  }
+}

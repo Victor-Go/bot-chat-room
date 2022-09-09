@@ -1,36 +1,12 @@
+@import "../../styles/mixins.scss";
+
 .chat-room {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   height: 100%;
-  animation: bg 50s infinite;
-  background: linear-gradient(127deg, rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0) 66%),
-    linear-gradient(217deg, rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 0) 66%),
-    linear-gradient(336deg, rgba(0, 0, 255, 0.5), rgba(0, 0, 255, 0) 66%);
-  background-size: 125%;
-
-  @keyframes bg {
-    0% {
-      background-position: 50% 50%;
-    }
-
-    25% {
-      background-position: 25% 75%;
-    }
-
-    50% {
-      background-position: 75% 75%;
-    }
-
-    75% {
-      background-position: 50% 25%;
-    }
-
-    100% {
-      background-position: 50% 50%;
-    }
-  }
+  @include dynamic-background;
 
   .chat-container {
     display: flex;
@@ -39,8 +15,7 @@
     right: 10%;
     bottom: 2rem;
     top: 5rem;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
-    border-radius: 1rem;
-  }
+
+    @include panel;
+    }
 }

@@ -1,0 +1,21 @@
+@import "../../styles/mixins.scss";
+
+.home {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include dynamic-background;
+
+  .username-input-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: -10%;
+  }
+}

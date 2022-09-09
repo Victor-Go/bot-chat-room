@@ -1,8 +1,12 @@
+$icon-size: 1.5rem;
+$title-bar-height: 3rem;
+
 .title-bar {
   position: absolute;
+  display: flex;
   left: 0;
   right: 0;
-  height: 3rem;
+  height: $title-bar-height;
   line-height: 3rem;
   padding: 0 2rem;
   left: 0;
@@ -10,10 +14,43 @@
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
 
+  &--right {
+    display: flex;
+    margin-left: auto;
+  }
+
   &__title {
     cursor: default;
     user-select: none;
     color: white;
     text-shadow: 1px 1px 5px black;
+  }
+
+  &__username {
+    color: white;
+    justify-content: flex-end;
+    margin-right: 1rem;
+    user-select: none;
+  }
+
+  &__icon {
+    cursor: pointer;
+    align-self: center;
+    height: $icon-size;
+    width: $icon-size;
+
+    &--talk {
+      margin-left: 0.5rem;
+      transform: translateY(-0.3rem) rotate(10deg);
+      transition: all 0.1s ease-in-out;
+
+      &:active {
+        transform: translate(0.1rem, -0.15rem) rotate(20deg);
+      }
+    }
+
+    &--exit {
+      height: calc($title-bar-height - 0.5rem);
+    }
   }
 }

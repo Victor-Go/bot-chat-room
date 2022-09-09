@@ -1,0 +1,36 @@
+@mixin dynamic-background {
+  animation: bg 50s infinite;
+  background: linear-gradient(127deg, rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0) 66%),
+    linear-gradient(217deg, rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 0) 66%),
+    linear-gradient(336deg, rgba(0, 0, 255, 0.5), rgba(0, 0, 255, 0) 66%);
+  background-size: 125%;
+
+  @keyframes bg {
+    0% {
+      background-position: 50% 50%;
+    }
+
+    25% {
+      background-position: 25% 75%;
+    }
+
+    50% {
+      background-position: 75% 75%;
+    }
+
+    75% {
+      background-position: 50% 25%;
+    }
+
+    100% {
+      background-position: 50% 50%;
+    }
+  }
+}
+
+@mixin panel {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 1rem;
+  box-shadow: 0 0 5rem rgba(0, 0, 0, 0.3);
+}
