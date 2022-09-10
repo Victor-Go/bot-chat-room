@@ -7,11 +7,12 @@ export enum MessageDirection {
 
 export type ChatModel = {
   direction: MessageDirection,
-  sender: string
-  message: string,
+  sender: string,
+  timeStamp: number,
+  message: string
 }
 
-const Chat: React.FC<ChatModel> = ({ direction, sender, message }) => {
+const Chat: React.FC<Omit<ChatModel, 'timeStamp'>> = ({ direction, sender, message }) => {
   return (
     <div className='chat'>
       <div className={'chat__title ' + (direction === MessageDirection.FROM_ME ? 'chat__title--right' : '')}>{sender}</div>

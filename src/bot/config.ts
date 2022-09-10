@@ -18,31 +18,31 @@ export const BOT_ANSWERS = {
 
 export const BOT_NAMES = [{
   username: "Denzil Llewellyn",
-  userId: "@denzilL"
+  userId: "denzilL"
 }, {
   username: "Diarmait McEachern",
-  userId: "@diarmaitM"
+  userId: "diarmaitM"
 }, {
   username: "Hosea Ragnvald",
-  userId: "@hoseaR"
+  userId: "hoseaR"
 }, {
   username: "LeonuserId Titianus",
-  userId: "@leonuserIdT"
+  userId: "leonuserIdT"
 }, {
   username: "Abbas Bożydar",
-  userId: "@abbasB"
+  userId: "abbasB"
 }, {
   username: "Aybek Philandros",
-  userId: "@aybekP"
+  userId: "aybekP"
 }, {
   username: "Jean Arce",
-  userId: "@jeanA"
+  userId: "jeanA"
 }, {
   username: "Sharon Santo",
-  userId: "@sharonS"
+  userId: "sharonS"
 }, {
   username: "Douglas Medley",
-  userId: "@douglasM"
+  userId: "douglasM"
 }];
 
 export const RANDOM_TALK = [

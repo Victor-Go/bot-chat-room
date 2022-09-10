@@ -1,5 +1,6 @@
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
+import { clearMessage } from '../../reducers/chatRoom'
 import { logout as _logout } from '../../reducers/users'
 import './TitleBar.scss'
 
@@ -16,6 +17,7 @@ function TitleBar() {
 
   const logout = () => {
     dispatch(_logout())
+    dispatch(clearMessage())
     nav('/')
   }
 

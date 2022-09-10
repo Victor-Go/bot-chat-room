@@ -1,20 +1,15 @@
-import { User, UserStatus } from '../../types/user'
+import { connect, useSelector } from 'react-redux'
+import { User } from '../../types/user'
 import UserCard from '../user-card/UserCard'
 import './UserList.scss'
 
-function UserList() {
-  const users: User[] = [
-    {
-      userId: 'victor',
-      username: 'Victor Yang',
-      avatarUrl: 'https://robohash.org/HelloWorld.png',
-      status: UserStatus.ONLINE
-    }
-  ]
+const mapStateToProps = (state: any) => ({
 
-  for (let i = 0; i < 100; i++) {
-    users.push(users[0])
-  }
+})
+const mapDispatchToProps = {}
+
+function UserList() {
+  const users: User[] = (useSelector((state: any) => state.users)).userList
 
   return (
     <div className='user-list'>
@@ -30,4 +25,4 @@ function UserList() {
   )
 }
 
-export default UserList
+export default connect(mapStateToProps, mapDispatchToProps)(UserList)

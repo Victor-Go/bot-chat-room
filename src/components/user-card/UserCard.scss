@@ -1,6 +1,8 @@
+$user-card-height: 5rem;
+
 .user-card {
   display: flex;
-  height: 5rem;
+  height: $user-card-height;
   padding: 0.5rem;
   box-sizing: border-box;
   transition: all ease-in-out 0.1s;
@@ -12,7 +14,8 @@
   }
 
   img {
-    height: 80%;
+    height: calc($user-card-height * 0.8);
+    width: calc($user-card-height * 0.8);
     align-self: center;
     border-radius: 5rem;
     background: white;
