@@ -1,5 +1,5 @@
 @mixin dynamic-background {
-  animation: bg 50s infinite;
+  animation: bg 10s infinite;
   background: linear-gradient(127deg, rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0) 66%),
     linear-gradient(217deg, rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 0) 66%),
     linear-gradient(336deg, rgba(0, 0, 255, 0.5), rgba(0, 0, 255, 0) 66%);

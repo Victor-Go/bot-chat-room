@@ -27,7 +27,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputC
   const chats: ChatModel[] = chatRoom.chats
 
   function sendMessage() {
-    dispatch(newMessage({
+    chatRoom.messageInput && dispatch(newMessage({
       fromId: userId,
       message: chatRoom.messageInput
     }))
