@@ -11,7 +11,7 @@ $title-bar-height: 3rem;
   padding: 0 2rem;
   left: 0;
   top: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(5px);
 
   &--right {
@@ -31,6 +31,7 @@ $title-bar-height: 3rem;
     justify-content: flex-end;
     margin-right: 1rem;
     user-select: none;
+    text-shadow: 1px 1px 5px black;
   }
 
   &__icon {
