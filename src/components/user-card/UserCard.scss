@@ -47,8 +47,19 @@ $user-card-height: 5rem;
             height: 0.5rem;
             width: 0.5rem;
             align-self: center;
-            background: green;
             border-radius: 1rem;
+
+            &--online {
+              background: green;
+            }
+
+            &--away {
+              background: orange;
+            }
+
+            &--playing{
+              background: deeppink;
+            }
           }
 
           &__user-id {

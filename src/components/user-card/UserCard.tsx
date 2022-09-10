@@ -1,17 +1,26 @@
-import { User } from '../../types/user'
+import { bindActionCreators as bind } from 'redux';
+import { User, UserStatus } from '../../types/user'
+import { onMention } from '../../reducers/chatRoom'
 import './UserCard.scss'
+import { connect } from 'react-redux';
 
-// https://robohash.org/HelloWorld.png
+type UserCardProps = User & { onMention: any }
+const mapStateToProps = (state: any) => ({
+})
+const mapDispatchToProps = (dispatch: any) => ({
+  onMention: bind(onMention, dispatch),
+})
+const UserCard: React.FC<UserCardProps> = ({ userId, username, avatarUrl, status, onMention }) => {
+  const statusClassName = 'details__status-icon ' + (status === UserStatus.ONLINE ? 'details__status-icon--online' : status === UserStatus.AWAY ? 'details__status-icon--away' : 'details__status-icon--playing')
 
-const UserCard: React.FC<User> = ({ userId, username, avatarUrl, status }) => {
   return (
-    <div className='user-card'>
+    <div className='user-card' onClick={() => onMention(userId)}>
       <img src={avatarUrl} />
       <div className='user-card__info'>
         <div className='info'>
           <div className='info__name'>{username}</div>
           <div className='info__details'>
-            <div className={'details__status-icon'}></div>
+            <div className={statusClassName}></div>
             <div className='details__status'>{status}</div>
             <div className='details__user-id'>@{userId}</div>
           </div>
@@ -21,4 +30,4 @@ const UserCard: React.FC<User> = ({ userId, username, avatarUrl, status }) => {
   )
 }
 
-export default UserCard
+export default connect(mapStateToProps, mapDispatchToProps)(UserCard)

@@ -15,7 +15,7 @@ function TitleBar() {
 
   const users = useSelector((state: any) => state.users)
 
-  const logout = () => {
+  function logout() {
     dispatch(_logout())
     dispatch(clearMessage())
     nav('/')

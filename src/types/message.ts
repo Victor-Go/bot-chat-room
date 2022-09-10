@@ -1,5 +1,5 @@
 export type Message = {
-  timeStamp: number,
+  timeStamp?: number,
   fromId: string,
   message: string,
 }

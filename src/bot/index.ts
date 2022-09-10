@@ -17,12 +17,11 @@ export const findMentioned = (message: string) => {
       results.push(execArray[1])
     }
   } while (execArray);
-  return results
+  return [...new Set(results)]
 }
 
 export const isBot = (userId: string) => {
   const botList: User[] = store.getState().users.userList
-  console.log(botList)
   return !!botList.find(bot => bot.userId === userId)
 }
 
@@ -39,10 +38,15 @@ export const generateBot = () => (
 )
 
 export const generateRandomBotStatus = (userList: User[]) => (
-  userList.map(user => ({
-    ...user,
-    status: [UserStatus.ONLINE, UserStatus.AWAY, UserStatus.PLAYING][randomNumber(0, 2)]
-  }))
+  userList
+    .map(user => ({
+      ...user,
+      status: [UserStatus.ONLINE, UserStatus.AWAY, UserStatus.PLAYING][randomNumber(0, 2)]
+    }))
+    .sort((a, b) => {
+      const order = [UserStatus.ONLINE, UserStatus.AWAY, UserStatus.PLAYING]
+      return order.indexOf(a.status) - order.indexOf(b.status)
+    })
 )
 
 export const getRandomTalk = (userList: User[]) => {
