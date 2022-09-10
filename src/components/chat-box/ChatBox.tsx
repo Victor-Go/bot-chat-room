@@ -4,6 +4,7 @@ import { connect, useDispatch, useSelector } from 'react-redux'
 import Chat, { ChatModel } from '../chat/Chat'
 import { newMessage, onMessageInputChange } from '../../reducers/chatRoom'
 import './ChatBox.scss'
+import Bot from '../bot/Bot';
 
 type ChatBoxProps = {
   userId: string,
@@ -34,6 +35,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputC
 
   return (
     <div className='chat-box'>
+      <Bot />
       <div className='chat-box__title'>Chat Room</div>
       <div className='chats'>
         {

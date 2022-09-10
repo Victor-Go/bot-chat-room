@@ -2,12 +2,9 @@ import { BOT_NAMES, BOT_ANSWERS, RANDOM_TALK } from './config'
 import { User, UserStatus } from '../types/user';
 import { Message } from '../types/message';
 import { store } from '../store';
+import { randomNumber } from '../utils/utils';
 
-const randomNumber = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-export const findMentioned = (message: string) => {
+export const getMentioned = (message: string) => {
   const regex = /@(\w+)\s/g
   let execArray, results = []
 
@@ -23,6 +20,11 @@ export const findMentioned = (message: string) => {
 export const isBot = (userId: string) => {
   const botList: User[] = store.getState().users.userList
   return !!botList.find(bot => bot.userId === userId)
+}
+
+export const getBotUsername = (userId: string) => {
+  const botList: User[] = store.getState().users.userList
+  return botList.find(bot => bot.userId === userId)?.username
 }
 
 export const generateBot = () => (
@@ -43,10 +45,6 @@ export const generateRandomBotStatus = (userList: User[]) => (
       ...user,
       status: [UserStatus.ONLINE, UserStatus.AWAY, UserStatus.PLAYING][randomNumber(0, 2)]
     }))
-    .sort((a, b) => {
-      const order = [UserStatus.ONLINE, UserStatus.AWAY, UserStatus.PLAYING]
-      return order.indexOf(a.status) - order.indexOf(b.status)
-    })
 )
 
 export const getRandomTalk = (userList: User[]) => {
@@ -67,7 +65,7 @@ export const getRandomTalk = (userList: User[]) => {
 
 export const handleMessage = (message: Message) => {
   const users: User[] = store.getState().users.userList
-  const mentioned = findMentioned(message.message)
+  const mentioned = getMentioned(message.message)
 
   if (users.find((bot: User) => mentioned.indexOf(bot.userId) < 0)) {
     return
