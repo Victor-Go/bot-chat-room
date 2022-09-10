@@ -9,7 +9,7 @@ function NotFound() {
   useEffect(() => {
     const timer = setTimeout(() => {
       nav('/')
-    }, 5000)
+    }, 4850)
     return () => clearTimeout(timer)
   }, [])
 

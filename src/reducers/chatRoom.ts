@@ -23,7 +23,7 @@ export default (state = initialState, action: any) => {
     case ON_NEW_MESSAGE:
       return {
         ...state,
-        chats: [...state.chats, action.chat],
+        chats: [action.chat, ...state.chats],
         messageInput: action.chat.direction === MessageDirection.FROM_ME ? '' : state.messageInput
       }
     case ON_INPUT_CHANGE:
