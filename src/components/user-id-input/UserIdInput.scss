@@ -3,7 +3,7 @@
 .username-input {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 30%;
   padding: 1rem;
   box-sizing: border-box;
   @include panel;
@@ -23,6 +23,7 @@
       outline: none;
       border: none;
       border-radius: 0.5rem;
+      box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.2);
     }
 
     div {
@@ -33,12 +34,14 @@
       text-shadow: 1px 1px 5px black;
       color: white;
       padding: 0 1rem;
-      background: #248bf5;
+      background: rgba(36, 139, 245, 0.9);
+      backdrop-filter: blur(5px);
       border-radius: 0.5rem;
       margin-left: 1rem;
+      box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.2);
 
       &:active {
-        background: #1d76cf;
+        background: rgba(36, 139, 245, 1);
       }
     }
   }

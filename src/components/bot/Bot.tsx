@@ -6,6 +6,7 @@ import { User, UserStatus } from "../../types/user"
 import { randomNumber } from "../../utils/utils"
 import { sprintf } from 'sprintf-js'
 import { BotSettings } from "../../settings/bot"
+import { refreshBotStatus } from "../../reducers/users"
 
 type BotProps = {
   botList: User[],
@@ -24,7 +25,7 @@ const Bot: React.FC<BotProps> = ({
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const randomTalk = setInterval(() => {
       const onlineBotList = botList.filter(bot => bot.status === UserStatus.ONLINE)
       if (onlineBotList.length > 0) {
         const bot = onlineBotList[randomNumber(0, onlineBotList.length - 1)]
@@ -36,8 +37,13 @@ const Bot: React.FC<BotProps> = ({
         }))
       }
     }, BotSettings.randomTalkIntervalInSeconds * 1000)
+
+    const refreshStatus = setInterval(() => {
+      dispatch(refreshBotStatus())
+    }, BotSettings.refreshBotStatusIntervalInSeconds * 1000)
     return () => {
-      clearInterval(interval)
+      clearInterval(randomTalk)
+      clearInterval(refreshStatus)
     }
   }, [])
 

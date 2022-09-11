@@ -45,7 +45,7 @@ export const BOT_NAMES = [{
   userId: "douglasM"
 }, {
   username: "Queen Elizabeth II",
-  userId: "QueenElizabeth2"
+  userId: "QElizabeth2"
 }];
 
 export const RANDOM_TALK = [

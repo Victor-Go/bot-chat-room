@@ -2,7 +2,7 @@ import { generateBot, generateRandomBotStatus } from '../bot'
 
 export const ON_USER_LOGIN = 'users/ON_USER_LOGIN'
 export const ON_USER_LOGOUT = 'users/ON_USER_LOGOUT'
-export const REFRESH_BOT = 'users/REFRESH_BOT'
+export const REFRESH_BOT_STATUS = 'users/REFRESH_BOT_STATUS'
 
 const initialState = {
   userId: '',
@@ -26,10 +26,10 @@ export default (state = initialState, action: any) => {
         username: '',
         userList: []
       }
-    case REFRESH_BOT:
+    case REFRESH_BOT_STATUS:
       return {
         ...state,
-        userList: generateRandomBotStatus(generateBot())
+        userList: generateRandomBotStatus(state.userList)
       }
     default: return state
   }
@@ -47,6 +47,6 @@ export const logout = () => ({
   type: ON_USER_LOGOUT
 })
 
-export const refreshBot = () => ({
-  type: REFRESH_BOT
+export const refreshBotStatus = () => ({
+  type: REFRESH_BOT_STATUS
 })
