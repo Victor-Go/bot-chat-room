@@ -82,6 +82,8 @@ export const onMessageInputChange = (input: string) =>
 
 
 export const onMention = (userId: string) => {
+  document.dispatchEvent(new CustomEvent(events.chat.ON_USER_MENTION, { detail: { userId } }))
+
   return ({
     type: ON_MENTION,
     userId
