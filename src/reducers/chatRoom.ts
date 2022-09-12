@@ -1,5 +1,6 @@
 import { getBotUsername, isCurrentUser } from '../bot'
 import { ChatModel, MessageDirection } from '../components/chat/Chat'
+import events from '../components/events'
 import { Message } from '../types/message'
 
 export const ON_NEW_MESSAGE = 'chats/ON_NEW_MESSAGE'
@@ -61,6 +62,10 @@ export const newMessage = (message: Message) => {
     sender: getSenderName(message.fromId),
     timeStamp: message.timeStamp || Date.now(),
     message: message.message
+  }
+
+  if (chat.direction === MessageDirection.FROM_ME) {
+    document.dispatchEvent(new CustomEvent(events.chat.ON_USER_MESSAGE, { detail: { message: message.message } }))
   }
 
   return {

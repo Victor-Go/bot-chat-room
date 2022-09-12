@@ -1,6 +1,6 @@
 import { BOT_NAMES, BOT_ANSWERS, RANDOM_TALK } from './config'
 import { User, UserStatus } from '../types/user';
-import { Message } from '../types/message';
+import { sprintf } from 'sprintf-js'
 import { store } from '../store';
 import { randomNumber } from '../utils/utils';
 
@@ -48,27 +48,15 @@ export const generateRandomBotStatus = (userList: User[]) => (
     }))
 )
 
-export const getRandomTalk = (userList: User[]) => {
-  const onlineBotIndex = userList.map((bot, index) => bot.status === UserStatus.ONLINE ? index : false);
-
-  if (onlineBotIndex.length > 0) {
-    const selectedBotIndex = randomNumber(0, onlineBotIndex.length - 1);
-    const selectedTalkIndex = randomNumber(0, RANDOM_TALK.length - 1);
-    const sender = userList[selectedBotIndex].username;
-    const message = RANDOM_TALK[selectedTalkIndex];
-
-    return {
-      sender,
-      message
-    };
-  }
+export const getAnswer = (answers: string[], ...args: string[]) => {
+  return sprintf(answers[randomNumber(0, answers.length - 1)], ...args)
 }
 
-export const handleMessage = (message: Message) => {
-  const users: User[] = store.getState().users.userList
-  const mentioned = getMentioned(message.message)
+export const getStatusAnswer = (status: UserStatus, ...args: string[]) => {
+  const answers = BOT_ANSWERS[status].map(({ message }) => message)
+  return getAnswer(answers, ...args)
+}
 
-  if (users.find((bot: User) => mentioned.indexOf(bot.userId) < 0)) {
-    return
-  }
+export const getRandomTalk = (...args: string[]) => {
+  return getAnswer(RANDOM_TALK, ...args)
 }
