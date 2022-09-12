@@ -8,7 +8,7 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = {}
 
 function UserList() {
-  const users: User[] = (useSelector((state: any) => state.users)).userList
+  const users: User[] = [...(useSelector((state: any) => state.users)).userList]
   users.sort((a, b) => {
     const order = [UserStatus.ONLINE, UserStatus.AWAY, UserStatus.PLAYING]
     return order.indexOf(a.status) - order.indexOf(b.status)

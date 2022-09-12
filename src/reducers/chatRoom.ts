@@ -1,4 +1,4 @@
-import { getBotUsername, isBot } from '../bot'
+import { getBotUsername, isCurrentUser } from '../bot'
 import { ChatModel, MessageDirection } from '../components/chat/Chat'
 import { Message } from '../types/message'
 
@@ -21,9 +21,10 @@ const initialState: ChatRoomState = {
 export default (state = initialState, action: any) => {
   switch (action.type) {
     case ON_NEW_MESSAGE:
+      const chats = [action.chat, ...state.chats]
       return {
         ...state,
-        chats: [action.chat, ...state.chats],
+        chats,
         messageInput: action.chat.direction === MessageDirection.FROM_ME ? '' : state.messageInput
       }
     case ON_INPUT_CHANGE:
@@ -48,16 +49,15 @@ export default (state = initialState, action: any) => {
 }
 
 const getSenderName = (userId: string) => {
-  const isBotUser = isBot(userId)
-  if (isBotUser) {
-    return getBotUsername(userId) || 'unknown'
+  if (!isCurrentUser(userId)) {
+    return getBotUsername(userId)
   }
   return userId.replace('_', ' ')
 }
 
 export const newMessage = (message: Message) => {
   const chat: ChatModel = {
-    direction: isBot(message.fromId) ? MessageDirection.FROM_OTHERS : MessageDirection.FROM_ME,
+    direction: isCurrentUser(message.fromId) ? MessageDirection.FROM_ME : MessageDirection.FROM_OTHERS,
     sender: getSenderName(message.fromId),
     timeStamp: message.timeStamp || Date.now(),
     message: message.message

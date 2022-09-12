@@ -17,14 +17,15 @@ export const getMentioned = (message: string) => {
   return [...new Set(results)]
 }
 
-export const isBot = (userId: string) => {
-  const botList: User[] = store.getState().users.userList
-  return !!botList.find(bot => bot.userId === userId)
+export const isCurrentUser = (senderId: string) => {
+  const userId: string = store.getState().users.userId
+  return userId === senderId
 }
 
 export const getBotUsername = (userId: string) => {
   const botList: User[] = store.getState().users.userList
-  return botList.find(bot => bot.userId === userId)?.username
+  const bot = botList.find(bot => bot.userId === userId)
+  return bot ? bot.username : 'unknown'
 }
 
 export const generateBot = () => (
