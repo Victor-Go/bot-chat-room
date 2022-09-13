@@ -2,6 +2,7 @@ import { getBotUsername, isCurrentUser } from '../bot'
 import { ChatModel, MessageDirection } from '../components/chat/Chat'
 import events from '../components/events'
 import { Message } from '../types/message'
+import { store } from '../store'
 
 export const ON_NEW_MESSAGE = 'chats/ON_NEW_MESSAGE'
 export const CLEAR_MESSAGE = 'chats/CLEAR_MESSAGE'
@@ -53,13 +54,13 @@ const getSenderName = (userId: string) => {
   if (!isCurrentUser(userId)) {
     return getBotUsername(userId)
   }
-  return userId.replace('_', ' ')
+  return store.getState().users.username
 }
 
 export const newMessage = (message: Message) => {
   const chat: ChatModel = {
     direction: isCurrentUser(message.fromId) ? MessageDirection.FROM_ME : MessageDirection.FROM_OTHERS,
-    sender: getSenderName(message.fromId),
+    senderName: getSenderName(message.fromId),
     timeStamp: message.timeStamp || Date.now(),
     message: message.message
   }
@@ -67,6 +68,7 @@ export const newMessage = (message: Message) => {
   if (chat.direction === MessageDirection.FROM_ME) {
     document.dispatchEvent(new CustomEvent(events.chat.ON_USER_MESSAGE, { detail: { message: message.message } }))
   }
+  document.dispatchEvent(new CustomEvent(events.chat.ON_MESSAGE, { detail: { message: message.message } }))
 
   return {
     chat,

@@ -7,6 +7,7 @@ import './ChatBox.scss'
 import Bot from '../bot/Bot';
 import events from '../events';
 import useFocus from '../../hooks/useFocus';
+import useBottom from '../../hooks/useBottom';
 
 type ChatBoxProps = {
   userId: string,
@@ -26,6 +27,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputC
   const dispatch = useDispatch()
   const isInitialRender = useRef(true)
   const [inputRef, focus] = useFocus()
+  const [chatsContainer, setBottom] = useBottom()
 
   const chatRoom = useSelector((state: any) => state.chatRoom)
   const chats: ChatModel[] = chatRoom.chats
@@ -42,11 +44,13 @@ const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputC
       isInitialRender.current = false;
       return;
     }
-
     document.addEventListener(events.chat.ON_USER_MENTION, focus)
+    document.addEventListener(events.chat.ON_USER_MESSAGE, setBottom)
+
 
     return () => {
       document.removeEventListener(events.chat.ON_USER_MENTION, focus)
+      document.removeEventListener(events.chat.ON_USER_MESSAGE, setBottom)
     }
   }, [])
 
@@ -54,15 +58,16 @@ const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputC
     <div className='chat-box'>
       <Bot />
       <div className='chat-box__title'>Chat Room</div>
-      <div className='chats'>
+      <div className='chats' ref={chatsContainer}>
         {
           chats.map((chat, index) => (
-            <Chat key={index} direction={chat.direction} sender={chat.sender} message={chat.message} />
+            <Chat key={index} direction={chat.direction} senderName={chat.senderName} message={chat.message} />
           ))
         }
       </div>
       <div className='textbox'>
         <input
+          autoComplete="off"
           ref={inputRef}
           autoFocus
           type='text'

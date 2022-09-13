@@ -34,7 +34,7 @@ export const generateBot = () => (
     return {
       username,
       userId,
-      avatarUrl: `https://robohash.org/${userId.replace('@', '')}.png`,
+      avatarUrl: `https://robohash.org/${userId.replaceAll('@', '')}.png`,
       status: UserStatus.ONLINE
     }
   })

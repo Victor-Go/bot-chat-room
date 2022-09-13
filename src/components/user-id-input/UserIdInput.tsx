@@ -39,7 +39,7 @@ const UserIdInput: React.FC<UserIdInputProps> = ({ username }) => {
           autoFocus
           maxLength={15}
           value={userId}
-          onChange={({ target }) => setUserId(target.value.replace(' ', '_').replace(/[^a-zA-Z0-9_]/gi, ''))}
+          onChange={({ target }) => setUserId(target.value && !target.value[0].match(/[0-9\s_]/) ? target.value.replaceAll(' ', '_').replaceAll(/[^a-zA-Z0-9_]/gi, '') : '')}
           onKeyDown={({ key }) => { if (key === 'Enter') goToChatRoom() }}
         />
         <div onClick={goToChatRoom}>Go!</div>

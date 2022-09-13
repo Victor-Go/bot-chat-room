@@ -38,7 +38,7 @@ export default (state = initialState, action: any) => {
 export const login = (userId: string) => {
   return {
     userId,
-    username: userId,
+    username: userId ? userId.split('_').map(word => `${word && word[0].toUpperCase()}${word.slice(1).toLowerCase()}`).join(' ').trim() : 'Anonymous',
     type: ON_USER_LOGIN
   }
 }
