@@ -45,7 +45,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputC
       return
     }
     document.addEventListener(events.chat.ON_USER_MENTION, focus)
-    document.addEventListener(events.chat.ON_USER_MESSAGE, setBottom)
+    document.addEventListener(events.chat.ON_MESSAGE, setBottom)
 
 
     return () => {
