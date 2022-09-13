@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "npm run build && vite preview",
+    "lint": "eslint '**/*.ts*'",
+    "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",

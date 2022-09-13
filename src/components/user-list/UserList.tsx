@@ -3,7 +3,7 @@ import { User, UserStatus } from '../../types/user'
 import UserCard from '../user-card/UserCard'
 import './UserList.scss'
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = () => ({
 })
 const mapDispatchToProps = {}
 

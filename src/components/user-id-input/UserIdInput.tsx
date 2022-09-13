@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { login } from '../../reducers/users';
+import { useEffect, useState } from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router'
+import { login } from '../../reducers/users'
 import './UserIdInput.scss'
 
 type UserIdInputProps = {

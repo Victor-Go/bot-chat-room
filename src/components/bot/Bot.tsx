@@ -1,13 +1,11 @@
-import { useEffect, useRef } from "react"
-import { connect, useDispatch } from "react-redux"
-import { RANDOM_TALK } from "../../bot/config"
-import { newMessage } from "../../reducers/chatRoom"
-import { User, UserStatus } from "../../types/user"
-import { randomNumber } from "../../utils/utils"
-import { sprintf } from 'sprintf-js'
-import { BotSettings } from "../../settings/bot"
-import { refreshBotStatus } from "../../reducers/users"
-import events from "../events"
+import { useEffect, useRef } from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { newMessage } from '../../reducers/chatRoom'
+import { User, UserStatus } from '../../types/user'
+import { randomNumber } from '../../utils/utils'
+import { BotSettings } from '../../settings/bot'
+import { refreshBotStatus } from '../../reducers/users'
+import events from '../events'
 import { getMentioned, getRandomTalk, getStatusAnswer } from '../../bot'
 
 type BotProps = {
@@ -25,7 +23,7 @@ const Bot: React.FC<BotProps> = ({
   userId
 }) => {
   const dispatch = useDispatch()
-  const isInitialRender = useRef(true);
+  const isInitialRender = useRef(true)
 
   function randomTalk() {
     const onlineBotList = botList.filter(bot => bot.status === UserStatus.ONLINE)
@@ -56,8 +54,8 @@ const Bot: React.FC<BotProps> = ({
 
   useEffect(() => {
     if (isInitialRender.current) {
-      isInitialRender.current = false;
-      return;
+      isInitialRender.current = false
+      return
     }
 
     const randomTalkInterval = setInterval(randomTalk, BotSettings.randomTalkIntervalInSeconds * 1000)

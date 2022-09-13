@@ -1,19 +1,20 @@
 import { BOT_NAMES, BOT_ANSWERS, RANDOM_TALK } from './config'
-import { User, UserStatus } from '../types/user';
+import { User, UserStatus } from '../types/user'
 import { sprintf } from 'sprintf-js'
-import { store } from '../store';
-import { randomNumber } from '../utils/utils';
+import { store } from '../store'
+import { randomNumber } from '../utils/utils'
 
 export const getMentioned = (message: string) => {
   const regex = /@(\w+)\s/g
-  let execArray, results = []
+  let execArray
+  const results = []
 
   do {
-    execArray = regex.exec(message);
+    execArray = regex.exec(message)
     if (execArray) {
       results.push(execArray[1])
     }
-  } while (execArray);
+  } while (execArray)
   return [...new Set(results)]
 }
 
@@ -30,7 +31,7 @@ export const getBotUsername = (userId: string) => {
 
 export const generateBot = () => (
   BOT_NAMES.map(bot => {
-    const { username, userId } = bot;
+    const { username, userId } = bot
     return {
       username,
       userId,

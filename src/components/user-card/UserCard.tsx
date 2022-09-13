@@ -1,11 +1,11 @@
-import { bindActionCreators as bind } from 'redux';
+import { bindActionCreators as bind } from 'redux'
 import { User, UserStatus } from '../../types/user'
 import { onMention } from '../../reducers/chatRoom'
 import './UserCard.scss'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 type UserCardProps = User & { onMention: any }
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = () => ({
 })
 const mapDispatchToProps = (dispatch: any) => ({
   onMention: bind(onMention, dispatch),

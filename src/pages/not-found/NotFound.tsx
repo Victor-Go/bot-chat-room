@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './NotFound.scss'
-import NotFoundAnimation from "../../components/not-found-animation/NotFoundAnimation";
+import NotFoundAnimation from '../../components/not-found-animation/NotFoundAnimation'
 
 function NotFound() {
   const nav = useNavigate()

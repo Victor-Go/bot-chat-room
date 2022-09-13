@@ -7,5 +7,29 @@ You could refer to this project for React Hooks learning.
 - Wholly based on React Hooks.
 - React Router for page switching.
 - Redux for user and chat state maintenance.
+- Custom Hooks.
 - Native events.
 - SCSS styling.
+
+# npm
+- Run dev server
+
+  ```
+  npm run dev
+  ```
+- Build project
+  ```
+  npm run build
+  ```
+- Preview project
+  ```
+  npm run preview
+  ```
+- Run lint
+  ```
+  npm run lint
+  ```
+- Fix lint errors
+  ```
+  npm run lint:Fix
+  ```

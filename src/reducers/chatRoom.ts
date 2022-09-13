@@ -22,13 +22,14 @@ const initialState: ChatRoomState = {
 
 export default (state = initialState, action: any) => {
   switch (action.type) {
-    case ON_NEW_MESSAGE:
+    case ON_NEW_MESSAGE: {
       const chats = [action.chat, ...state.chats]
       return {
         ...state,
         chats,
         messageInput: action.chat.direction === MessageDirection.FROM_ME ? '' : state.messageInput
       }
+    }
     case ON_INPUT_CHANGE:
       return {
         ...state,
@@ -77,10 +78,10 @@ export const newMessage = (message: Message) => {
 }
 
 export const onMessageInputChange = (input: string) =>
-({
-  type: ON_INPUT_CHANGE,
-  input
-})
+  ({
+    type: ON_INPUT_CHANGE,
+    input
+  })
 
 
 export const onMention = (userId: string) => {

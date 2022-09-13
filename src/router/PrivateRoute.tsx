@@ -1,6 +1,6 @@
 import { RouteObject, useRoutes } from 'react-router-dom'
 import { routes } from './config'
-import { Suspense } from 'react';
+import { Suspense } from 'react'
 
 const f = (): RouteObject[] => routes.map(route => ({
   ...route,
