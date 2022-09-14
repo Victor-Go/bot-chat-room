@@ -1,7 +1,7 @@
 import { connect, useSelector } from 'react-redux'
 import { User, UserStatus } from '../../types/user'
 import UserCard from '../user-card/UserCard'
-import './UserList.scss'
+import styles from './UserList.module.scss'
 
 const mapStateToProps = () => ({
 })
@@ -15,9 +15,9 @@ function UserList() {
   })
 
   return (
-    <div className='user-list'>
-      <div className='user-list__title'>Contacts</div>
-      <div className='user-list__list'>
+    <div className={styles['user-list']}>
+      <div className={styles['user-list__title']}>Contacts</div>
+      <div className={styles['user-list__list']}>
         {
           users.map((user, index) => (
             <UserCard key={index} userId={user.userId} username={user.username} avatarUrl={user.avatarUrl} status={user.status} />

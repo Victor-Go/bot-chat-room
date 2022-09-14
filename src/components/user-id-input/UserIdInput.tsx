@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { login } from '../../reducers/users'
-import './UserIdInput.scss'
+import styles from './UserIdInput.module.scss'
 
 type UserIdInputProps = {
   username: string
@@ -32,9 +32,9 @@ const UserIdInput: React.FC<UserIdInputProps> = ({ username }) => {
   }, [])
 
   return (
-    <div className='username-input'>
+    <div className={styles['username-input']}>
       <p>Enter your User ID</p>
-      <div className='username-input__container'>
+      <div className={styles['username-input__container']}>
         <input
           autoFocus
           maxLength={15}

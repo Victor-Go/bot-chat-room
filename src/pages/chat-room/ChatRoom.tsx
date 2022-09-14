@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router'
 import ChatBox from '../../components/chat-box/ChatBox'
 import TitleBar from '../../components/title-bar/TitleBar'
 import UserList from '../../components/user-list/UserList'
-import './ChatRoom.scss'
+import styles from './ChatRoom.module.scss'
 
 function ChatRoom() {
   const nav = useNavigate()
@@ -19,9 +19,9 @@ function ChatRoom() {
   return (
     <>
       {
-        users.userId && <div className='chat-room'>
+        users.userId && <div className={styles['chat-room']}>
           <TitleBar />
-          <div className='chat-container'>
+          <div className={styles['chat-container']}>
             <UserList />
             <ChatBox />
           </div>

@@ -31,5 +31,5 @@ You could refer to this project for React Hooks learning.
   ```
 - Fix lint errors
   ```
-  npm run lint:Fix
+  npm run lint:fix
   ```

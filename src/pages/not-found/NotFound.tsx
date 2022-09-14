@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './NotFound.scss'
+import styles from './NotFound.module.scss'
 import NotFoundAnimation from '../../components/not-found-animation/NotFoundAnimation'
 
 function NotFound() {
@@ -14,9 +14,9 @@ function NotFound() {
   }, [])
 
   return (
-    <div className="not-found-container">
+    <div className={styles['not-found-container']}>
       <NotFoundAnimation />
-      <p className="not-found-container__text">Page not found, redirecting to homepage.</p>
+      <p className={styles['not-found-container__text']}>Page not found, redirecting to homepage.</p>
     </div>
   )
 }

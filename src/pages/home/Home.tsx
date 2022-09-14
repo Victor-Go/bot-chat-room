@@ -1,12 +1,12 @@
 import TitleBar from '../../components/title-bar/TitleBar'
 import UserIdInput from '../../components/user-id-input/UserIdInput'
-import './Home.scss'
+import styles from './Home.module.scss'
 
 function Home() {
   return (
-    <div className='home'>
+    <div className={styles.home}>
       <TitleBar />
-      <div className='username-input-container'>
+      <div className={styles['username-input-container']}>
         <UserIdInput />
       </div>
     </div>
