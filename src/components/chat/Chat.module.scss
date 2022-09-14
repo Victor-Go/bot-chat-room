@@ -1,6 +1,7 @@
 .chat {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.25rem;
 
   &__title {
     font-size: 75%;
@@ -22,6 +23,7 @@
     width: -moz-fit-content;
     width: fit-content;
     margin-top: 0;
+    margin-bottom: 0;
   }
 
   p::selection {
@@ -34,6 +36,18 @@
     content: "";
     height: 1rem;
     position: absolute;
+  }
+
+  &__foot {
+    font-size: 75%;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    &--right {
+      align-self: flex-end;
+    }
   }
 
   &_from-me {

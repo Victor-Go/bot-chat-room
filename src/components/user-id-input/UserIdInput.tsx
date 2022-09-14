@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { clearMessage } from '../../reducers/chatRoom'
@@ -14,7 +14,7 @@ const mapStateToProps = (state: any) => ({
 })
 const mapDispatchToProps = { login }
 
-const UserIdInput: React.FC<UserIdInputProps> = ({ username }) => {
+const UserIdInput: React.FC<UserIdInputProps> = () => {
   const [userId, setUserId] = useState('')
   const nav = useNavigate()
   const dispatch = useDispatch()

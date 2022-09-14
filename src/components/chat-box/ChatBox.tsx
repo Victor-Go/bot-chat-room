@@ -61,7 +61,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputC
       <div className={styles.chats} ref={chatsContainer}>
         {
           chats.map((chat, index) => (
-            <Chat key={index} direction={chat.direction} senderName={chat.senderName} message={chat.message} />
+            <Chat key={index} direction={chat.direction} senderName={chat.senderName} timeStamp={chat.timeStamp} message={chat.message} />
           ))
         }
       </div>

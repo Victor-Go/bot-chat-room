@@ -1,6 +1,6 @@
 import styles from './Loading.module.scss'
 
-export default function () {
+function Loading() {
   return (
     <div className={styles.loading}>
       <div className={styles['loading__container']}>
@@ -9,3 +9,4 @@ export default function () {
     </div>
   )
 }
+export default Loading
