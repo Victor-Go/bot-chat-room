@@ -10,6 +10,7 @@ $submit-button-size: 1.5rem;
 
   &__title {
     cursor: default;
+    -webkit-user-select: none;
     user-select: none;
     height: 3rem;
     line-height: 3rem;
@@ -47,6 +48,7 @@ $submit-button-size: 1.5rem;
         padding: 0.5rem 0.875rem;
         position: relative;
         word-wrap: break-word;
+        width: -moz-fit-content;
         width: fit-content;
         margin-top: 0;
       }

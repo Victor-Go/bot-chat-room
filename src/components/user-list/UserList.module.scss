@@ -8,6 +8,7 @@
 
   &__title {
     cursor: default;
+    -webkit-user-select: none;
     user-select: none;
     height: 3rem;
     line-height: 3rem;

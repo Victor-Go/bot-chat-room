@@ -15,7 +15,7 @@ const UserCard: React.FC<UserCardProps> = ({ userId, username, avatarUrl, status
 
   return (
     <div className={styles['user-card']} onClick={() => onMention(userId)}>
-      <img src={avatarUrl} />
+      <img title={userId} src={avatarUrl} />
       <div className={styles['user-card__info']}>
         <div className={styles.info}>
           <div className={styles['info__name']}>{username}</div>

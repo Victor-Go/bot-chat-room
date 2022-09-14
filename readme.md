@@ -3,6 +3,8 @@ This is a sample chat room with very simple bots, it is developed by React Hooks
 
 You could refer to this project for React Hooks learning.
 
+![screenshot](./screenshot.png)
+
 # Features
 - Wholly based on React Hooks.
 - React Router for page switching.

@@ -4,6 +4,7 @@
 
   &__title {
     font-size: 75%;
+    -webkit-user-select: none;
     user-select: none;
 
     &--right {
@@ -18,6 +19,7 @@
     padding: 0.5rem 0.875rem;
     position: relative;
     word-wrap: break-word;
+    width: -moz-fit-content;
     width: fit-content;
     margin-top: 0;
   }

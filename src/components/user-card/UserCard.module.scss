@@ -6,6 +6,7 @@ $user-card-height: 5rem;
   padding: 0.5rem;
   box-sizing: border-box;
   transition: all ease-in-out 0.1s;
+  -webkit-user-select: none;
   user-select: none;
 
   &:hover {
@@ -57,7 +58,7 @@ $user-card-height: 5rem;
               background: orange;
             }
 
-            &--playing{
+            &--playing {
               background: deeppink;
             }
           }
