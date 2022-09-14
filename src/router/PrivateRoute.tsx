@@ -1,11 +1,12 @@
 import { RouteObject, useRoutes } from 'react-router-dom'
 import { routes } from './config'
 import { Suspense } from 'react'
+import Loading from '../pages/loading/Loading'
 
 const f = (): RouteObject[] => routes.map(route => ({
   ...route,
   element: (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={Loading()}>
       <route.element />
     </Suspense>
   )

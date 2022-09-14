@@ -1,6 +1,6 @@
 @import "../../styles/mixins.module.scss";
 
-.not-found {
+.loading {
   position: absolute;
   left: 0;
   right: 0;
@@ -14,9 +14,13 @@
 
   &__container {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    color: white;
     font-weight: bold;
+    width: 10rem;
+    height: 10rem;
+    border: 0.25rem solid white;
+    border-radius: 10rem;
+    justify-content: center;
+    color: white;
   }
 }

@@ -14,11 +14,11 @@ const defaultOptions = {
 export const routes: IRoute[] = [
   {
     path: '*',
-    element: lazy(()=>import('../pages/not-found/NotFound'))
+    element: lazy(() => import('../pages/not-found/NotFound'))
   },
   {
     path: '/',
-    element: lazy(()=>import('../pages/home/Home'))
+    element: lazy(() => import('../pages/home/Home'))
   },
   {
     path: '/chat-room',

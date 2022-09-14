@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
+import { clearMessage } from '../../reducers/chatRoom'
 import { login } from '../../reducers/users'
 import styles from './UserIdInput.module.scss'
 
@@ -20,16 +21,11 @@ const UserIdInput: React.FC<UserIdInputProps> = ({ username }) => {
 
   const goToChatRoom = () => {
     if (userId.length > 0) {
+      dispatch(clearMessage())
       dispatch(login(userId))
       nav('/chat-room')
     }
   }
-
-  useEffect(() => {
-    if (username) {
-      nav('/chat-room')
-    }
-  }, [])
 
   return (
     <div className={styles['username-input']}>

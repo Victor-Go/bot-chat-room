@@ -14,8 +14,11 @@ You could refer to this project for React Hooks learning.
 - SCSS styling.
 
 # npm
+- Install dependencies
+  ```
+  npm install
+  ```
 - Run dev server
-
   ```
   npm run dev
   ```

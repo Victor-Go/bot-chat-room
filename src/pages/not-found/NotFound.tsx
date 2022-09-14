@@ -14,9 +14,11 @@ function NotFound() {
   }, [])
 
   return (
-    <div className={styles['not-found-container']}>
-      <NotFoundAnimation />
-      <p className={styles['not-found-container__text']}>Page not found, redirecting to homepage.</p>
+    <div className={styles['not-found']}>
+      <div className={styles['not-found__container']}>
+        <NotFoundAnimation />
+        <p className={styles['not-found__text']}>Page not found, redirecting to homepage.</p>
+      </div>
     </div>
   )
 }
