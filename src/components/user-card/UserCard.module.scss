@@ -44,6 +44,10 @@ $user-card-height: 5rem;
         }
 
         .details {
+          &__status {
+            width: 4rem;
+          }
+
           &__status-icon {
             height: 0.5rem;
             width: 0.5rem;

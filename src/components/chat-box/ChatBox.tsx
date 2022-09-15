@@ -44,15 +44,21 @@ const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputC
       isInitialRender.current = false
       return
     }
-    document.addEventListener(events.chat.ON_USER_MENTION, focus)
-    document.addEventListener(events.chat.ON_MESSAGE, setBottom)
 
+    setBottom()
+
+    document.addEventListener(events.chat.ON_USER_MENTION, focus)
 
     return () => {
       document.removeEventListener(events.chat.ON_USER_MENTION, focus)
-      document.removeEventListener(events.chat.ON_USER_MESSAGE, setBottom)
     }
   }, [])
+
+  useEffect(() => {
+    if (chats.length > 0) {
+      setBottom()
+    }
+  }, [chats])
 
   return (
     <div className={styles['chat-box']}>

@@ -3,6 +3,8 @@ import { ChatModel, MessageDirection } from '../components/chat/Chat'
 import events from '../components/events'
 import { Message } from '../types/message'
 import { store } from '../store'
+import { Dispatch } from 'react'
+import { AnyAction } from '@reduxjs/toolkit'
 
 export const ON_NEW_MESSAGE = 'chats/ON_NEW_MESSAGE'
 export const CLEAR_MESSAGE = 'chats/CLEAR_MESSAGE'
@@ -23,7 +25,7 @@ const initialState: ChatRoomState = {
 export default (state = initialState, action: any) => {
   switch (action.type) {
     case ON_NEW_MESSAGE: {
-      const chats = [action.chat, ...state.chats]
+      const chats = [...state.chats, action.chat]
       return {
         ...state,
         chats,
@@ -58,7 +60,7 @@ const getSenderName = (userId: string) => {
   return store.getState().users.username
 }
 
-export const newMessage = (message: Message) => {
+export const newMessage = (message: Message): any => (dispatch: Dispatch<AnyAction>) => {
   const chat: ChatModel = {
     direction: isCurrentUser(message.fromId) ? MessageDirection.FROM_ME : MessageDirection.FROM_OTHERS,
     senderName: getSenderName(message.fromId),
@@ -71,10 +73,10 @@ export const newMessage = (message: Message) => {
   }
   document.dispatchEvent(new CustomEvent(events.chat.ON_MESSAGE, { detail: { message: message.message } }))
 
-  return {
+  dispatch({
     chat,
     type: ON_NEW_MESSAGE,
-  }
+  })
 }
 
 export const onMessageInputChange = (input: string) =>
