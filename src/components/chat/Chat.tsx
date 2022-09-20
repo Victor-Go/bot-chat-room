@@ -1,4 +1,5 @@
 import { PropsWithChildren, useState } from 'react'
+import { getFormattedDate } from '../../utils/utils'
 import styles from './Chat.module.scss'
 
 export enum MessageDirection {
@@ -14,16 +15,7 @@ export interface ChatModel {
 }
 
 const Chat: React.FC<PropsWithChildren<ChatModel>> = ({ direction, senderName, timeStamp, message }) => {
-  const date = new Date(timeStamp)
-  const today = new Date().setHours(0, 0, 0, 0)
-  const year = date.getFullYear()
-  const month = date.getMonth()
-  const day = date.getDate()
-  const hours = date.getHours()
-  const minutes = '0' + date.getMinutes()
-  const seconds = '0' + date.getSeconds()
-  const formattedTime = hours + ':' + minutes.slice(-2) + ':' + seconds.slice(-2)
-  const formattedDate = today === new Date(timeStamp).setHours(0, 0, 0, 0) ? formattedTime : `${year}-${month + 1}-${day} ${formattedTime}`
+  const formattedDate = getFormattedDate(timeStamp)
 
   const [showTimeStamp, setShowTimeStamp] = useState(false)
 

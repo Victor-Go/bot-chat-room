@@ -4,18 +4,21 @@ import { connect, useDispatch, useSelector } from 'react-redux'
 import Chat, { ChatModel } from '../chat/Chat'
 import { newMessage, onMessageInputChange } from '../../reducers/chatRoom'
 import styles from './ChatBox.module.scss'
-import Bot from '../bot/Bot'
 import events from '../events'
 import useFocus from '../../hooks/useFocus'
 import useBottom from '../../hooks/useBottom'
+import useBot from '../../hooks/useBot'
+import { User } from '../../types/user'
 
 type ChatBoxProps = {
   userId: string,
+  userList: User[],
   messageInput: string,
   onMessageInputChange: any
 }
 
 const mapStateToProps = (state: any) => ({
+  userList: state.users.userList,
   userId: state.users.userId,
   messageInput: state.chatRoom.messageInput
 })
@@ -23,7 +26,7 @@ const mapDispatchToProps = (dispatch: any) => ({
   onMessageInputChange: bind(onMessageInputChange, dispatch),
 })
 
-const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputChange }) => {
+const ChatBox: React.FC<ChatBoxProps> = ({ userId, userList, messageInput, onMessageInputChange }) => {
   const dispatch = useDispatch()
   const isInitialRender = useRef(true)
   const [inputRef, focus] = useFocus()
@@ -31,6 +34,8 @@ const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputC
 
   const chatRoom = useSelector((state: any) => state.chatRoom)
   const chats: ChatModel[] = chatRoom.chats
+
+  useBot(userList, userId)
 
   function sendMessage() {
     chatRoom.messageInput && dispatch(newMessage({
@@ -62,7 +67,6 @@ const ChatBox: React.FC<ChatBoxProps> = ({ userId, messageInput, onMessageInputC
 
   return (
     <div className={styles['chat-box']}>
-      <Bot />
       <div className={styles['chat-box__title']}>Chat Room</div>
       <div className={styles.chats} ref={chatsContainer}>
         {
